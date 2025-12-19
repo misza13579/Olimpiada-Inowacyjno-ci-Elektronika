@@ -1,4 +1,5 @@
 # Olimpiada-Inowacyjno-ci-Elektronika
+Pozostałe do implementacji funkcje:
 Aplikacja:
 -wyświetlanie zapisu na graficznej szachownicy;
 -analiza zagranych parti;
