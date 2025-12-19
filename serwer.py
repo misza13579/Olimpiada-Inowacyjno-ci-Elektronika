@@ -24,7 +24,6 @@ class ChessSystem:
         self.BTN_WHITE = 19
         self.BTN_BLACK = 5
         GPIO.setmode(GPIO.BCM)
-        # Ustawiamy PULL_DOWN, bo przyciski podają sygnał HIGH (podłączone do 3.3V)
         GPIO.setup(self.BTN_WHITE, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         GPIO.setup(self.BTN_BLACK, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
