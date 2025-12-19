@@ -61,7 +61,6 @@ class BleController extends ChangeNotifier {
     Function(String) onDataReceived,
   ) async {
     try {
-      // Przywrócony parametr license: DeviceLicense.free
       await device
           .connect(autoConnect: false, license: License.free)
           .timeout(const Duration(seconds: 10));
@@ -109,7 +108,7 @@ class GameController extends ChangeNotifier {
   List<String> moves = [];
   List<Map<String, dynamic>> archive = [];
   double difficulty = 800;
-  double gameTime = 10; // NOWE: czas gry
+  double gameTime = 10;
   bool isConnecting = false;
 
   void setConnecting(bool val) {
@@ -135,7 +134,6 @@ class GameController extends ChangeNotifier {
 
   void startNewGame(BleController ble) {
     moves.clear();
-    // NOWY FORMAT: Wysyłamy ELO i CZAS
     ble.sendData(
       "START_GAME:ELO:${difficulty.toInt()}:TIME:${gameTime.toInt()}",
     );

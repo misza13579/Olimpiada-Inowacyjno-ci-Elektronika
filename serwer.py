@@ -20,7 +20,7 @@ STOCKFISH_PATH = "/usr/games/stockfish"
 
 class ChessSystem:
     def __init__(self):
-        # 1. Konfiguracja przycisków (Pin 35 -> BCM 19, Pin 29 -> BCM 5)
+        # 1. Konfiguracja przycisków
         self.BTN_WHITE = 19
         self.BTN_BLACK = 5
         GPIO.setmode(GPIO.BCM)
@@ -31,7 +31,6 @@ class ChessSystem:
         # 2. Inicjalizacja ekranu
         try:
             serial_interface = spi(port=0, device=0, gpio_DC=27, gpio_RST=17, bus_speed_hz=32000000)
-            # rotate=3 zazwyczaj daje najlepszy tryb poziomy dla tych ekranów
             self.device = ili9488(serial_interface, width=480, height=320, rotate=2) 
             print("--- Ekran zainicjalizowany ---")
         except Exception as e:
@@ -135,7 +134,7 @@ async def run_server():
 
         if data.startswith("START_GAME:ELO:"):
             try:
-                # START_GAME:ELO:800:TIME:10
+
                 parts = data.split(":")
                 elo_val = int(parts[2])
                 time_val = int(parts[4])
